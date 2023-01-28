@@ -2,7 +2,7 @@
   <img src="./assets/img/pipe.svg" alt="" class="wrapper__img">
   <div class="wrapper__blure"></div>
   <section class="time">
-      17:08:02
+      {{ time$ | async | date:'HH:mm:ss' }}
   </section>
   <section class="sensors">
       <div class="sensor">
