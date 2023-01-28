@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'django_apscheduler',
+
+    #APPS
+    'rrms_arduino_app',
+    'rrms_scheduler_app',
+    'rrms_web_app',
 ]
 
 MIDDLEWARE = [
