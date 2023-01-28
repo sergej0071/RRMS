@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 @import url('https://fonts.googleapis.com/css2?family=Material+Icons');
 
-@import '~@angular/material/theming';
+@import './node_modules/@angular/material/theming';
 @include mat-core();
 
 $control-theme-primary: mat-palette($mat-yellow, 900);

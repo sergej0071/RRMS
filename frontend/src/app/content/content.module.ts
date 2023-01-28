@@ -6,6 +6,7 @@ import { StatisticPageComponent } from './statistic-page/statistic-page.componen
 import { MatSliderModule } from '@angular/material/slider';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 
 
@@ -20,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatSliderModule,
-    TranslateModule
+    TranslateModule,
+    NgxEchartsModule
   ]
 })
 export class ContentModule { }
