@@ -28,8 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/reset.scss"
+              "src/colors.scss",
+              "src/reset.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -97,8 +98,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/reset.scss"
+              "src/colors.scss",
+              "src/reset.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           }
