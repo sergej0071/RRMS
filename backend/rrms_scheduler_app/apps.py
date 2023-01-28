@@ -1,6 +1,10 @@
 from django.apps import AppConfig
 
 
-class RrmsSchedulerAppConfig(AppConfig):
+class SchedulerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'rrms_scheduler_app'
+    name = 'scheduler'
+    
+    def ready(self):
+            from scheduler import scheduler
+            scheduler.start()
