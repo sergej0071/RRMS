@@ -5,12 +5,6 @@ export interface IArticle {
   content: string;
 }
 
-export interface ICurrentValues {
-  temperature: number;
-  pressure: number;
-  humidity: number;
-}
-
 export interface IChartValue {
   value: [Date, number]
 }
