@@ -1,0 +1,31 @@
+.wrapper {
+  margin: 0 auto;
+  width: 1200px;
+  min-height: calc(100vh - 265px);
+  padding: 25px 0;
+
+  * {
+      transition-duration: 1s;
+  }
+}
+
+.article {
+  padding: 25px 0;
+
+  &__header {
+      padding: 8px 30px;
+      width: 300px;
+      text-align: center;
+      margin-bottom: 25px;
+      background: var(--neutral);
+      color: var(--light);
+      font-size: 20px;
+  }
+
+  &__content {
+      font-size: 20px;
+      color: var(--contrast);
+      padding: 50px 95px;
+      border: 5px solid var(--accent);
+  }
+}

@@ -1,0 +1,119 @@
+.wrapper {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  background: var(--main);
+  transition-duration: 1s;
+}
+
+.navigation {
+  display: flex;
+}
+
+.link {
+  background: var(--neutral);
+  color: var(--light);
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition-duration: .2s;
+
+  &:hover {
+      background-color: var(--neutral-hover);
+  }
+
+  &:active {
+      background-color: var(--neutral-active);
+  }
+
+  &__title {
+      font-size: 20px;
+  }
+
+  &--active {
+      background: var(--accent);
+      color: var(--dark);
+      font-weight: 700;
+
+      &:hover {
+          background-color: var(--accent-hover);
+      }
+
+      &:active {
+          background-color: var(--accent-active);
+      }
+  }
+}
+
+
+.settings {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.language {
+  font-size: 15px;
+  background: var(--contrast);
+  color: var(--main);
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: none;
+  transition-duration: 1s;
+  font-weight: bold;
+  appearance: none;
+  cursor: pointer;
+}
+
+.theme {
+  transition-duration: .5s;
+  position: relative;
+  border-radius: 20px;
+  background: var(--contrast);
+  color: var(--main);
+  display: flex;
+  font-size: 20px;
+  line-height: 20px;
+  cursor: pointer;
+  user-select: none;
+  align-items: center;
+
+  &__mod {
+      margin: 5px;
+      line-height: 20px;
+      z-index: 2;
+
+      &--active {
+          color: var(--dark);
+      }
+  }
+
+  &__selector {
+      z-index: 1;
+      position: absolute;
+      top: 4px;
+      bottom: 5px;
+      width: 30px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: all .5s ease-out;
+
+      &--left {
+          left: 5px;
+      }
+
+      &--right {
+          left: 35px;
+      }
+  }
+}
+
+.line {
+  background: var(--contrast);
+  height: 10px;
+  transition-duration: 1s;
+}

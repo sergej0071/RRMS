@@ -1,2 +1,2 @@
-# MOS
-Meteorological Observation System
+# RRMS
+Research Results Monitoring System
