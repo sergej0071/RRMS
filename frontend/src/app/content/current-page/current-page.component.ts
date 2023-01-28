@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, interval, map } from 'rxjs';
+import { Observable, map, timer } from 'rxjs';
 
 @Component({
   selector: 'app-current-page',
@@ -13,7 +13,7 @@ export class CurrentPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.time$ = interval(1000).pipe(
+    this.time$ = timer(0, 1000).pipe(
       map(() => new Date()));
   }
 
