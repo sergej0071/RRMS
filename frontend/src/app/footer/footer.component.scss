@@ -1,0 +1,16 @@
+.footer{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 30px auto;
+  font-size: 15px;
+  &__text{
+      margin: 15px auto;
+  }
+}
+
+.line {
+  background: var(--contrast);
+  height: 10px;
+}
