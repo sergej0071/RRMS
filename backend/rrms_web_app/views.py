@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
+from django.http import JsonResponse
 
-# Create your views here.
+class CurrentStatus(APIView):
+    def get(self,request):        
+        return JsonResponse({})
+
+class LastValues(APIView):
+    def get(self, request):
+        return JsonResponse({})
