@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { SettingsService } from '../shared/services/settings.service';
@@ -7,6 +7,7 @@ import { SettingsService } from '../shared/services/settings.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit, OnDestroy  {
   public theme$: BehaviorSubject<string> = this.settingsService.getTheme();
