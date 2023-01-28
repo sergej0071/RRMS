@@ -22,19 +22,21 @@
           <option value="en">EN</option>
           <option value="ru">RU</option>
       </select>
-      <div class="theme">
-          <div class="theme__mod">
-              <span class="material-icons">
-                  nightlight
-              </span>
-          </div>
-          <div class="theme__mod theme__mod--active">
-              <span class="material-icons">
-                  light_mode
-              </span>
-          </div>
-          <div class="theme__selector theme__selector--right"></div>
-      </div>
+      <div class="theme" (click)="switchTheme()">
+        <div class="theme__mod">
+            <span class="material-icons">
+                nightlight
+            </span>
+        </div>
+        <div class="theme__mod theme__mod--active">
+            <span class="material-icons">
+                light_mode
+            </span>
+        </div>
+        <div
+            [ngClass]="['theme__selector', (theme$ | async) === 'light' ? 'theme__selector--right' : 'theme__selector--left']">
+        </div>
+    </div>
   </div>
 </header>
 <div class="line"></div>
