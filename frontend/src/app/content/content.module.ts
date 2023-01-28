@@ -5,6 +5,7 @@ import { HelpPageComponent } from './help-page/help-page.component';
 import { StatisticPageComponent } from './statistic-page/statistic-page.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,6 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatSliderModule,
     TranslateModule
   ]
