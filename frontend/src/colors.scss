@@ -1,0 +1,33 @@
+:root{
+  --accent: #F4D800;
+  --accent-hover: #f4e600;
+  --accent-active: #f4ec09;
+
+  --dark: #050707;
+  --dark-hover: #151d1d;
+  --dark-active: #1f2b2b;
+  --neutral: #53565A;
+  --neutral-hover: #63666b;
+  --neutral-active: #72767c;
+  --light: #ECF1F2;
+  --light-hover: #b9c3c5;
+  --light-active: #97a0a2;
+}
+
+.light-theme{
+  --main: var(--light);
+  --main-hover: var(--light-hover);
+  --main-active: var(--light-active);
+  --contrast: var(--dark);
+  --contrast-hover: var(--dark-hover);
+  --contrast-active: var(--dark-active);
+}
+
+.dark-theme{
+  --main: var(--dark);
+  --main-hover: var(--dark-hover);
+  --main-active: var(--dark-active);
+  --contrast: var(--light);
+  --contrast-hover: var(--light-hover);
+  --contrast-active: var(--light-active);
+}
