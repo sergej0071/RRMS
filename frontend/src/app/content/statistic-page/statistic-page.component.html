@@ -1,5 +1,21 @@
-<div class="wrapper">
-  <mat-slider>
-    <input matSliderThumb>
-  </mat-slider>
-</div>
+<main class="wrapper">
+  <section class="select-values">
+    <div class="select-values__text">Last values 10...10000 values</div>
+    <div class="select-values__select">
+      <div class="select-values__slider-wrapper">
+        <mat-slider class="select-values__slider">
+          <input matSliderThumb>
+        </mat-slider>
+      </div>
+      <input type="text" value="100" class="select-values__input">
+    </div>
+  </section>
+  <section class="data">
+    <div class="data__chart"></div>
+    <div class="data__line"></div>
+    <div class="data__sensor">
+      <img src="./assets/img/temperature.svg" alt="temperature" class="data__image">
+      <div class="data__type">Temperature</div>
+    </div>
+  </section>
+</main>
