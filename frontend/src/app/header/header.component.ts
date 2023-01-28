@@ -9,12 +9,19 @@ import { SettingsService } from '../shared/services/settings.service';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnInit, OnDestroy  {
+export class HeaderComponent implements OnInit, OnDestroy {
+
+  public pages: string[] = [
+    'current',
+    'statistic',
+    'help'
+  ];
   public theme$: BehaviorSubject<string> = this.settingsService.getTheme();
+  
   public subToLangControl!: Subscription;
   public langControl: FormControl = new FormControl('en');
 
-  constructor(public settingsService: SettingsService) {}
+  constructor(public settingsService: SettingsService) { }
 
   ngOnInit(): void {
     this.subToLangControl = this.langControl.valueChanges.subscribe((value) =>

@@ -1,20 +1,10 @@
 <header class="wrapper">
   <nav class="navigation">
-      <div class="link link--active">
-          <div class="link__title">
-            {{'HEADER.current' | translate}}
-          </div>
+    <div class="link" routerLinkActive="link--active" *ngFor="let page of pages" [routerLink]="[page]">
+      <div class="link__title">
+        {{'HEADER.' + page | translate}}
       </div>
-      <div class="link">
-          <div class="link__title">
-            {{'HEADER.statistic' | translate}}
-          </div>
-      </div>
-      <div class="link">
-          <div class="link__title">
-            {{'HEADER.help' | translate}}
-          </div>
-      </div>
+    </div>
   </nav>
 
   <div class="settings">
