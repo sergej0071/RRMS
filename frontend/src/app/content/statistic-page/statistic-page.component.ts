@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { MAX_VALUE, MIN_VALUE } from 'src/app/shared/setup-charts';
+import { ThemeOption } from 'ngx-echarts';
+import { BehaviorSubject, map, Observable, Subscription, timer } from 'rxjs';
+import { IChartValue, IPackageEChartOption } from 'src/app/shared/interfaces';
+import { CHART_SETUP, CHART_THEME, MAX_VALUE, MIN_VALUE } from 'src/app/shared/setup-charts';
 
 @Component({
   selector: 'app-statistic-page',
@@ -18,7 +20,11 @@ export class StatisticPageComponent implements OnInit {
   public value$: BehaviorSubject<number> = new BehaviorSubject<number>(MIN_VALUE);
 
   public subToValue!: Subscription;
-  
+
+  public chartTheme: ThemeOption = CHART_THEME;
+  public options: any = CHART_SETUP;
+  public updateOptions$: Observable<IPackageEChartOption> | null = null;
+
   constructor() { }
 
   ngOnInit(): void {

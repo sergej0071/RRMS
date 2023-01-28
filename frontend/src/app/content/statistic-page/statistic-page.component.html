@@ -1,4 +1,4 @@
-<main class="wrapper">
+<main class="wrapper" *ngIf="updateOptions$ | async as updateOptions">
   <section class="select-values"  *ngIf="value$ | async as value">
     <div class="select-values__text">{{'STATISTIC.last' | translate}} 10...10000 {{'STATISTIC.values' | translate}}</div>
     <div class="select-values__select">
@@ -23,7 +23,9 @@
     </div>
   </section>
   <section class="data">
-    <div class="data__chart"></div>
+    <div class="data__chart">
+      <div echarts [options]="options" [theme]="chartTheme" [merge]="updateOptions.temperature" ></div>
+    </div>
     <div class="data__line"></div>
     <div class="data__sensor">
       <img src="./assets/img/temperature.svg" alt="temperature" class="data__image">
@@ -31,7 +33,9 @@
     </div>
   </section>
   <section class="data">
-    <div class="data__chart"></div>
+    <div class="data__chart">
+      <div echarts [options]="options" [theme]="chartTheme" [merge]="updateOptions.pressure" ></div>
+    </div>
     <div class="data__line"></div>
     <div class="data__sensor">
       <img src="./assets/img/pressure.svg" alt="pressure" class="data__image">
@@ -39,7 +43,9 @@
     </div>
   </section>
   <section class="data">
-    <div class="data__chart"></div>
+    <div class="data__chart">
+      <div echarts [options]="options" [theme]="chartTheme" [merge]="updateOptions.humidity" ></div>
+    </div>
     <div class="data__line"></div>
     <div class="data__sensor">
       <img src="./assets/img/humidity.svg" alt="humidity" class="data__image">
