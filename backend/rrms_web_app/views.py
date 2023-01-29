@@ -1,8 +1,14 @@
 from rest_framework.views import APIView
 from django.http import JsonResponse
+from rrms_arduino_app.arduinoService import ArduinoService
 
 class CurrentStatus(APIView):
     def get(self,request):
+
+        x = ArduinoService()
+        sad =  x.getArduinoModel()
+
+
         try:
             j = {
                     "temperature": 12.22,
