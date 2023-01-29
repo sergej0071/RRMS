@@ -10,8 +10,6 @@ future==0.18.3
 iso8601==1.1.0
 joblib==1.2.0
 np==1.0.2
-numpy==1.24.1
-pandas==1.5.3
 pymongo==3.12.3
 pyserial==3.5
 python-dateutil==2.8.2
@@ -19,11 +17,9 @@ pytz==2022.6
 pytz-deprecation-shim==0.1.0.post0
 PyYAML==6.0
 scikit-learn==1.2.0
-scipy==1.10.0
 six==1.16.0
 sklearn==0.0.post1
 sqlparse==0.2.4
 threadpoolctl==3.1.0
 tzdata==2022.6
 tzlocal==4.2
-pyserial==3.5
