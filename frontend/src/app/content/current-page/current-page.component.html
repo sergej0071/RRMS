@@ -1,0 +1,26 @@
+<main class="wrapper">
+  <img src="./assets/img/pipe.svg" alt="" class="wrapper__img">
+  <div class="wrapper__blure"></div>
+  <section class="time">
+      {{ time$ | async | date:'HH:mm:ss' }}
+  </section>
+  <section class="sensors" *ngIf="currentValues$ | async as currentValues; else loading">
+    <div class="sensor">
+        <div class="sensor__value"><div>{{currentValues.temperature}}°C</div></div>
+        <img src="./assets/img/temperature.svg" alt="" class="sensor__image">
+    </div>
+    <div class="sensor">
+        <div class="sensor__value sensor__value--pascal"><div>{{currentValues.pressure}}kPa</div></div>
+        <img src="./assets/img/pressure.svg" alt="" class="sensor__image">
+    </div>
+    <div class="sensor">
+        <div class="sensor__value"><div>{{currentValues.humidity}}%</div></div>
+        <img src="./assets/img/humidity.svg" alt="" class="sensor__image">
+    </div>
+  </section>
+  <ng-template #loading>
+    <div class="loading">
+        loading...
+    </div>
+  </ng-template>
+</main>

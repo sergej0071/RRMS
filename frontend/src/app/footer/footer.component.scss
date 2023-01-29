@@ -1,0 +1,22 @@
+.footer {
+  transition-duration: 1s;
+  background: var(--main);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 30px;
+  font-size: 15px;
+
+  &__text {
+      color: var(--contrast);
+      margin: 15px auto;
+      transition-duration: 1s;
+  }
+}
+
+.line {
+  background: var(--contrast);
+  height: 10px;
+  transition-duration: 1s;
+}
