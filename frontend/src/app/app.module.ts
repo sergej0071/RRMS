@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -37,8 +38,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-    }})
+    }}),
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

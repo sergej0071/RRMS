@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ThemeOption } from 'ngx-echarts';
-import { BehaviorSubject, map, Observable, Subscription, timer } from 'rxjs';
-import { IChartValue, IPackageEChartOption } from 'src/app/shared/interfaces';
 import { CHART_SETUP, CHART_THEME, MAX_VALUE, MIN_VALUE } from 'src/app/shared/setup-charts';
 import { BehaviorSubject, map, Observable, Subscription, switchMap, timer } from 'rxjs';
 import { ILastValues, IPackageEChartOption } from 'src/app/shared/interfaces';
