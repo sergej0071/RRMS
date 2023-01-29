@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ARTICLES } from 'src/app/shared/articles';
+import { IArticle } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-help-page',
   templateUrl: './help-page.component.html',
-  styleUrls: ['./help-page.component.scss']
+  styleUrls: ['./help-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HelpPageComponent implements OnInit {
+export class HelpPageComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  public atricles: IArticle[] = ARTICLES;
 
 }
