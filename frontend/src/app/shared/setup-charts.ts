@@ -33,7 +33,7 @@ export const CHART_SETUP = {
 
 export const CHART_THEME = {
     color: [
-        '#53565A',
+        // '#53565A',
         '#F4D800'
     ]
 };
