@@ -26,4 +26,3 @@ sqlparse==0.2.4
 threadpoolctl==3.1.0
 tzdata==2022.6
 tzlocal==4.2
-pyserial==3.5
