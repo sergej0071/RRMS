@@ -1,6 +1,7 @@
 import serial
 import logger
 
+
 class ArduinoService():
     ArduinoSeparator = "x"
 
