@@ -10,3 +10,11 @@ class CurrentStatusCase(APITestCase):
     def test_wrong_take_current(self):
         response = self.client.post("/current/", {})
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    def test_take_last_values(self):
+        response = self.client.get("/last_values/")
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_wrong_take_last_values(self):
+        response = self.client.post("/last_values/", {})
+        self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
