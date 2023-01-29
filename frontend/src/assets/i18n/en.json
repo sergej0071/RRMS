@@ -1,0 +1,28 @@
+{
+    "HEADER":{
+        "current": "Current",
+        "statistic": "Statistic",
+        "help": "Help"
+    },
+    "FOOTER":{
+        "developers": "Developed by: Ann Shutko | Pavel Ryndyn | Semen Synytsyn | Sergey Denisenko",
+        "goal": "Designed for the subject: ПМтаЗЯПЗС"
+    },
+    "STATISTIC":{
+        "last": "Last",
+        "values": "values",
+        "temperature": "Temperature",
+        "pressure": "Pressure",
+        "humidity": "Humidity"
+    },
+    "HELP":{
+        "current_page":{
+            "header": "Current page",
+            "content": "On this page we can observe the current state of the sensors. We get this data from the BMP280 sensor, which is attached to the Arduino Mega."
+        },
+        "statistic_page":{
+            "header": "Statistic page",
+            "content": "On this page we can observe graphs of changes of each sensor. You can select the time range for which the graph will be built."
+        }
+    }
+}

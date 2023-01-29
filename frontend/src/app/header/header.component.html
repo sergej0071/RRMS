@@ -1,40 +1,33 @@
 <header class="wrapper">
   <nav class="navigation">
-      <div class="link link--active">
-          <div class="link__title">
-              Current
-          </div>
+    <div class="link" routerLinkActive="link--active" *ngFor="let page of pages" [routerLink]="[page]">
+      <div class="link__title">
+        {{'HEADER.' + page | translate}}
       </div>
-      <div class="link">
-          <div class="link__title">
-              Statistic
-          </div>
-      </div>
-      <div class="link">
-          <div class="link__title">
-              Help
-          </div>
-      </div>
+    </div>
   </nav>
 
   <div class="settings">
-      <select class="language">
+      <select class="language" [formControl]="langControl">
           <option value="en">EN</option>
           <option value="ru">RU</option>
+          <option value="ua">UA</option>
       </select>
-      <div class="theme">
-          <div class="theme__mod">
-              <span class="material-icons">
-                  nightlight
-              </span>
-          </div>
-          <div class="theme__mod theme__mod--active">
-              <span class="material-icons">
-                  light_mode
-              </span>
-          </div>
-          <div class="theme__selector theme__selector--right"></div>
-      </div>
+      <div class="theme" (click)="switchTheme()">
+        <div class="theme__mod">
+            <span class="material-icons">
+                nightlight
+            </span>
+        </div>
+        <div class="theme__mod theme__mod--active">
+            <span class="material-icons">
+                light_mode
+            </span>
+        </div>
+        <div
+            [ngClass]="['theme__selector', (theme$ | async) === 'light' ? 'theme__selector--right' : 'theme__selector--left']">
+        </div>
+    </div>
   </div>
 </header>
 <div class="line"></div>
