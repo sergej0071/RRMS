@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ThemeOption } from 'ngx-echarts';
-import { CHART_SETUP, CHART_THEME, MAX_VALUE, MIN_VALUE } from 'src/app/shared/setup-charts';
-import { BehaviorSubject, map, Observable, Subscription, switchMap, timer } from 'rxjs';
-import { ILastValues, IPackageEChartOption } from 'src/app/shared/interfaces';
+import { map, Observable, Subscription, switchMap, timer } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { IApiValues, IPackageEChartOption, IChartValues } from 'src/app/shared/interfaces';
 import { ParseApiService } from 'src/app/shared/services/parse-api.service';
+import { CHART_SETUP, CHART_THEME, MAX_VALUE, MIN_VALUE } from 'src/app/shared/setup-charts';
 
 @Component({
   selector: 'app-statistic-page',
@@ -12,7 +13,7 @@ import { ParseApiService } from 'src/app/shared/services/parse-api.service';
   styleUrls: ['./statistic-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StatisticPageComponent implements OnInit {
+export class StatisticPageComponent implements OnInit, OnDestroy {
 
   public minValue: number = MIN_VALUE;
   public maxValue: number = MAX_VALUE;
@@ -40,15 +41,32 @@ export class StatisticPageComponent implements OnInit {
     );
 
     this.updateOptions$ = timer(0, 1000).pipe(
-      switchMap((): Observable<ILastValues> =>
-        this.parseApiService.getLastValues(this.value$.getValue())),
-
-      map((lastValues: ILastValues): IPackageEChartOption => ({
-          temperature: { series: [{ data: lastValues.temperature }] },
-          pressure: { series: [{ data: lastValues.pressure }] },
-          humidity: { series: [{ data: lastValues.humidity }] }
-        })
-      ));
+      switchMap((): Observable<IChartValues> => {
+        return this.parseApiService.getLastValues(this.value$.getValue())
+      }),
+      map((lastValues: IChartValues): IPackageEChartOption => {
+        return {
+          temperature: {
+            series: [
+              { name: 'prognosis', type: 'line', data: lastValues.prognosisData.temperature },
+              { name: 'real data', type: 'line', data: lastValues.realData.temperature },
+            ]
+          },
+          pressure: {
+            series: [
+              { name: 'prognosis', type: 'line', data: lastValues.prognosisData.pressure },
+              { name: 'real data', type: 'line', data: lastValues.realData.pressure },
+            ]
+          },
+          humidity: {
+            series: [
+              { name: 'prognosis', type: 'line', data: lastValues.prognosisData.humidity },
+              { name: 'real data', type: 'line', data: lastValues.realData.humidity },
+            ]
+          }
+        }
+      })
+    );
   }
 
   ngOnDestroy() {
