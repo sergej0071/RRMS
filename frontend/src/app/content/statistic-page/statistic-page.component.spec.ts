@@ -59,12 +59,12 @@ describe('StatisticPageComponent', () => {
     expect(value$.getValue()).toBe(MIN_VALUE);
   });
 
-  it(`should value be equal to ${MAX_VALUE + 500}`, () => {
+  it(`should value be equal to ${MAX_VALUE}`, () => {
     valueControl.setValue(MAX_VALUE + 500);
     expect(value$.getValue()).toBe(MAX_VALUE);
   });
 
-  it(`should value be equal to ${MAX_VALUE + 25}`, () => {
+  it(`should value be equal to ${MAX_VALUE}`, () => {
     valueControl.setValue(MAX_VALUE + 25);
     expect(value$.getValue()).toBe(MAX_VALUE);
   });
