@@ -1,36 +1,34 @@
 from rest_framework.views import APIView
 from django.http import JsonResponse
+from django.http import HttpResponse
 from rrms_arduino_app.arduinoService import ArduinoService
+from .models import MainData
+import logging
+
+logger = logging.getLogger('error_logger')
 
 class CurrentStatus(APIView):
     def get(self,request):
-
-        x = ArduinoService()
-        sad =  x.getArduinoModel()
-
-
         try:
-            j = {
-                    "temperature": 12.22,
-                    "pressure": 34.54,
-                    "humidity": 56.46                   
-                }
+            j = MainData.objects.last()
+            j_dict = {"temperature":j.temperature, "pressure":j.pressure, "humidity":j.humidity}
         except Exception as e:
-            return JsonResponse({"errors":str(e)})
-        return JsonResponse(j)
+            logger.error(f'An exception occurred in ArduinoTicknessService. exeption - {e} ')
+            return HttpResponse(status=400)
+        return JsonResponse(j_dict, safe=False)
 
 class LastValues(APIView):
     def get(self,request):
+        response = {}
         try:
-            j = {
-                    "":
-                    {
-                        "temperature": 12.22,
-                        "pressure": 34.54,
-                        "humidity": 56.46,
-                        "timeadata": 1673731147363    
-                    }, 
-                }        
+            amount = request.headers.get('amount')
+            query = MainData.objects.all()
+            try:
+                j = query.values('temperature', 'pressure', 'humidity', 'timeadata')[:int(amount)]
+            except:
+                j = query.values('temperature', 'pressure', 'humidity','timeadata')            
+            response = list(j)
         except Exception as e:
-            return JsonResponse({"errors":str(e)})
-        return JsonResponse(j)
+            logger.error(f'An exception occurred in ArduinoTicknessService. exeption - {e} ')
+            return HttpResponse(status=400)
+        return JsonResponse(response, safe=False)
