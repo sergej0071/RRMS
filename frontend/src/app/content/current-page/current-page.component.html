@@ -4,7 +4,7 @@
   <section class="time">
       {{ time$ | async | date:'HH:mm:ss' }}
   </section>
-  <section class="sensors" *ngIf="currentValues$ | async as currentValues">
+  <section class="sensors" *ngIf="currentValues$ | async as currentValues; else loading">
     <div class="sensor">
         <div class="sensor__value"><div>{{currentValues.temperature}}°C</div></div>
         <img src="./assets/img/temperature.svg" alt="" class="sensor__image">
@@ -17,5 +17,10 @@
         <div class="sensor__value"><div>{{currentValues.humidity}}%</div></div>
         <img src="./assets/img/humidity.svg" alt="" class="sensor__image">
     </div>
-</section>
+  </section>
+  <ng-template #loading>
+    <div class="loading">
+        loading...
+    </div>
+  </ng-template>
 </main>

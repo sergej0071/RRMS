@@ -3,6 +3,17 @@
   max-width: 1600px;
 }
 
+.loading{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 800;
+  font-size: 96px;
+  text-align: center;
+  color: var(--contrast);
+  padding: 60px;
+  width: 588px;
+  margin: 0 auto;
+}
+
 .select-values {
   &__text {
     font-weight: 400;
