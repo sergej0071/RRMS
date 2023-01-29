@@ -25,7 +25,7 @@ export class StatisticPageComponent implements OnInit, OnDestroy {
 
   public chartTheme: ThemeOption = CHART_THEME;
   public options: any = CHART_SETUP;
-  public updateOptions: Observable<IPackageEChartOption> | null = null;
+  public updateOptions$!: Observable<IPackageEChartOption>;
 
   constructor(
     private parseApiService: ParseApiService
@@ -40,7 +40,7 @@ export class StatisticPageComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.updateOptions = timer(0, 1000).pipe(
+    this.updateOptions$ = timer(0, 1000).pipe(
       switchMap((): Observable<IChartValues> => {
         return this.parseApiService.getLastValues(this.value$.getValue())
       }),
