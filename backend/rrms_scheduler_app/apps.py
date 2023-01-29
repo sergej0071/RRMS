@@ -6,5 +6,5 @@ class SchedulerConfig(AppConfig):
     name = 'scheduler'
     
     def ready(self):
-            from scheduler import scheduler
+            from rrms_scheduler_app import scheduler
             scheduler.start()
