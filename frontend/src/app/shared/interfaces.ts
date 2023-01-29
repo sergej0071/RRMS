@@ -35,7 +35,7 @@ export interface IApiValue {
   temperature: number;
   pressure: number;
   humidity: number;
-  date: Date;
+  timeDate: Date;
 }
 
 export interface IPackageEChartOption {
