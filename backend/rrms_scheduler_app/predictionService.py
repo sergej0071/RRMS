@@ -4,6 +4,7 @@ import datetime
 import numpy as np
 import pandas as pd
 import logging
+from varname import nameof
 
 class PredictionService():
     def __init__(self):
