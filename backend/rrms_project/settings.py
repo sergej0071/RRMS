@@ -75,7 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rrms_project.wsgi.application'
-
+MOCK_SCHEDULER = False
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
