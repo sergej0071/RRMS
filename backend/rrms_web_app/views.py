@@ -32,7 +32,7 @@ class LastValues(APIView):
                 j = query.values('temperature', 'pressure', 'humidity','timeadata')
             response = self._returnRealAndPredictData(list(j))
         except Exception as e:
-            logger.error(f'An exception occurred in ArduinoTicknessService. exeption - {e} ')
+            pass
             return HttpResponse(status=400)
         return JsonResponse(response, safe=False)
     
