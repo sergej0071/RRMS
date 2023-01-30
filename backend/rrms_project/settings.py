@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_apscheduler',
+    # 'django_apscheduler',
 
     #APPS
     'rrms_arduino_app',
-    'rrms_scheduler_app',
+    # 'rrms_scheduler_app',
     'rrms_web_app',
 ]
 
@@ -81,9 +81,13 @@ MOCK_SCHEDULER = False
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+'default': {
+    'ENGINE': 'djongo',
+    'NAME': 'RRMS',
+    'CLIENT': {
+        'host': 'localhost',
+        'port': 27017,
+        }
     }
 }
 
