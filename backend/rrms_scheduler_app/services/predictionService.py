@@ -4,27 +4,32 @@ import datetime
 import numpy as np
 import pandas as pd
 import logging
+from varname import nameof
 
 class PredictionService():
     def __init__(self):
         self.logger = logging.getLogger('error_logger')
-    def getPredictionValue(self, value, timePeriod, predictAmount = 10, degreeP = 8):  
+    def getPredictionValue(self, value, timePeriod, predictAmount = 10, degreeP = 3):
 
-        if(value == None and len(value) == 0):
+        if(value == None or len(value) == 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} 
-            method: {nameof(getPredictionValue)} value: {value} None or empty""")
+            method: {nameof(self.getPredictionValue)} value: {value} None or empty""")
+            return None
 
-        if(timePeriod == None and timePeriod <= 0):
+        if(timePeriod == None or timePeriod <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \ 
-            method: {nameof(getPredictionValue)} timePeriod: {timePeriod} None or <= 0""")
+            method: {nameof(self.getPredictionValue)} timePeriod: {timePeriod} None or <= 0""")
+            return None
 
-        if(predictAmount == None and predictAmount <= 0):
+        if(predictAmount == None or predictAmount <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
-            method: {nameof(getPredictionValue)} predictAmount: {predictAmount} None or <= 0""")
+            method: {nameof(self.getPredictionValue)} predictAmount: {predictAmount} None or <= 0""")
+            return None
 
-        if(degreeP == None and degreeP <= 0):
+        if(degreeP == None or degreeP <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
-            method: {nameof(getPredictionValue)} degreeP: {degreeP} None or <= 0 """)
+            method: {nameof(self.getPredictionValue)} degreeP: {degreeP} None or <= 0 """)
+            return None
 
         conditionalTime = [i for i in range(1, len(value) + 1, timePeriod)]
         arrayTime = np.array(conditionalTime)
@@ -47,17 +52,20 @@ class PredictionService():
 
     def modifyPredictedTime(self, time, timePeriod, predictAmount = 10):
         
-        if(time == None and len(time) == 0):
+        if(time == None or len(time) == 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
-            *method: {nameof(getPredictionValue)} time: {time} None or empty""")
+            *method: {nameof(self.getPredictionValue)} time: {time} None or empty""")
+            return None
 
-        if(timePeriod == None and timePeriod <= 0):
+        if(timePeriod == None or timePeriod <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
-            *method: {nameof(getPredictionValue)} timePeriod: {timePeriod} None or <= 0""")
+            *method: {nameof(self.getPredictionValue)} timePeriod: {timePeriod} None or <= 0""")
+            return None
 
-        if(predictAmount == None and predictAmount <= 0):
+        if(predictAmount == None or predictAmount <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
-            *method: {nameof(getPredictionValue)} predictAmount: {predictAmount} None or <= 0""")
+            *method: {nameof(self.getPredictionValue)} predictAmount: {predictAmount} None or <= 0""")
+            return None
 
         seconds = [i for i in range(1, predictAmount + 1, timePeriod)]
         lastTick = time[-1]
