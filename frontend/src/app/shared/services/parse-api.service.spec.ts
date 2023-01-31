@@ -26,7 +26,7 @@ describe('ParseApiService', () => {
           temperature: 12,
           pressure: 23,
           humidity: 34,
-          timeDate: new Date(123)
+          timeData: new Date(123)
         }
       ],
       prognosisData: [
@@ -34,7 +34,7 @@ describe('ParseApiService', () => {
           temperature: 45,
           pressure: 56,
           humidity: 67,
-          timeDate: new Date(1234)
+          timeData: new Date(1234)
         }
       ]
     };

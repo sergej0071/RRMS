@@ -52,14 +52,13 @@ export class ParseApiService {
   getLastValues(amount: number): Observable<IChartValues> {
     if (IS_MOCK) return this.getMockLastValues(amount);
     const reduceFunc = (prev: IArrayData, current: IApiValue) => {
-      prev.temperature.push({ value: [current.timeDate, current.temperature] });
-      prev.pressure.push({ value: [current.timeDate, current.pressure] });
-      prev.humidity.push({ value: [current.timeDate, current.humidity] });
+      prev.temperature.push({ value: [current.timeData, current.temperature] });
+      prev.pressure.push({ value: [current.timeData, current.pressure] });
+      prev.humidity.push({ value: [current.timeData, current.humidity] });
       return prev;
     };
-    return this.http.get<IApiValues>(API_PATH + '/last-values', {
-      headers: { amount: String(amount) }
-    }).pipe(
+
+    return this.http.get<IApiValues>(`${API_PATH}/last-values?amount=${amount}`).pipe(
       map((statisticValues: IApiValues) => ({
         realData: {
           ...statisticValues.realData.reduce(reduceFunc, {
