@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-%=za=2_$xh05t@wn@sri*c1_8wov*)_yuyryq#%^7td9wai8w#
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS = True
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:4200',
+    'http://127.0.0.1:8000',
+)
 
 # Application definition
 
@@ -38,22 +44,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    # 'django_apscheduler',
+    'django_apscheduler',
+    'corsheaders',
 
     #APPS
     'rrms_arduino_app',
-    # 'rrms_scheduler_app',
+    'rrms_scheduler_app',
     'rrms_web_app',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
 ]
 
 ROOT_URLCONF = 'rrms_project.urls'
@@ -83,7 +92,7 @@ MOCK_SCHEDULER = False
 DATABASES = {
 'default': {
     'ENGINE': 'djongo',
-    'NAME': 'RRMS',
+    'NAME': 'TestDB',
     'CLIENT': {
         'host': 'localhost',
         'port': 27017,

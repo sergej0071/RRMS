@@ -11,22 +11,22 @@ class PredictionService():
         self.logger = logging.getLogger('error_logger')
     def getPredictionValue(self, value, timePeriod, predictAmount = 10, degreeP = 3):
 
-        if(value == None or len(value) == 0):
+        if(value is None or len(value) == 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} 
             method: {nameof(self.getPredictionValue)} value: {value} None or empty""")
             return None
 
-        if(timePeriod == None or timePeriod <= 0):
+        if(timePeriod is None or timePeriod <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \ 
             method: {nameof(self.getPredictionValue)} timePeriod: {timePeriod} None or <= 0""")
             return None
 
-        if(predictAmount == None or predictAmount <= 0):
+        if(predictAmount is None or predictAmount <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
             method: {nameof(self.getPredictionValue)} predictAmount: {predictAmount} None or <= 0""")
             return None
 
-        if(degreeP == None or degreeP <= 0):
+        if(degreeP is None or degreeP <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
             method: {nameof(self.getPredictionValue)} degreeP: {degreeP} None or <= 0 """)
             return None
@@ -52,17 +52,17 @@ class PredictionService():
 
     def modifyPredictedTime(self, time, timePeriod, predictAmount = 10):
         
-        if(time == None or len(time) == 0):
+        if(time is None or len(time) == 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
             *method: {nameof(self.getPredictionValue)} time: {time} None or empty""")
             return None
 
-        if(timePeriod == None or timePeriod <= 0):
+        if(timePeriod is None or timePeriod <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
             *method: {nameof(self.getPredictionValue)} timePeriod: {timePeriod} None or <= 0""")
             return None
 
-        if(predictAmount == None or predictAmount <= 0):
+        if(predictAmount is None or predictAmount <= 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
             *method: {nameof(self.getPredictionValue)} predictAmount: {predictAmount} None or <= 0""")
             return None

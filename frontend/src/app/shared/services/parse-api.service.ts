@@ -4,7 +4,7 @@ import { map, Observable, of } from 'rxjs';
 import { IArrayData, IChartValue, IChartValues, ICurrentValues, IApiValues, IApiValue } from '../interfaces';
 
 const IS_MOCK: boolean = false;
-const API_PATH: string = '/api';
+const API_PATH: string = 'http://127.0.0.1:8000/';
 
 @Injectable({
   providedIn: 'root'
