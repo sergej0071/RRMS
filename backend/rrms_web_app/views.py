@@ -9,30 +9,32 @@ from django.http import JsonResponse
 from django.http import HttpResponse
 from django.core.serializers.json import DjangoJSONEncoder
 from rrms_scheduler_app.predictionService import PredictionService
+import logging
+
+logger = logging.getLogger('error_logger')
 
 class CurrentStatus(APIView):
     def get(self,request):
+        j_dict = {}
         try:
             j = MainData.objects.last()
             j_dict = {"temperature":j.temperature, "pressure":j.pressure, "humidity":j.humidity}
         except Exception as e:
-            return JsonResponse({"errors":str(e)})
+            logger.error(f'An exception occurred in CurrentStatus. exeption - {e} ')
         return JsonResponse(j_dict, safe=False)
 class LastValues(APIView):
-
-    def get(self, request):
+    def get(self, request, amount=5):
         response = {}
-
         try:
-            amount = request.headers.get('amount')
+            amount = request.GET['amount']
             query = MainData.objects.all()
             try:
-                j = query.values('temperature', 'pressure', 'humidity', 'timeadata')[:int(amount)]
+                j = query.values('temperature', 'pressure', 'humidity', 'timeData')[:int(amount)]
             except:
-                j = query.values('temperature', 'pressure', 'humidity','timeadata')
+                j = query.values('temperature', 'pressure', 'humidity','timeData')
             response = self._returnRealAndPredictData(list(j))
         except Exception as e:
-            logger.error(f'An exception occurred in ArduinoTicknessService. exeption - {e} ')
+            logger.error(f'An exception occurred in CurrentStatus. exeption - {e} ')
             return HttpResponse(status=400)
         return JsonResponse(response, safe=False)
     
@@ -40,7 +42,7 @@ class LastValues(APIView):
         timePeriod = 1        
         predictService = PredictionService()
         
-        data = predictService.modifyPredictedTime(self._splitArrayBykey(realData, 'timeadata'), timePeriod)
+        data = predictService.modifyPredictedTime(self._splitArrayBykey(realData, 'timeData'), timePeriod)
 
         temperatureArray = predictService.getPredictionValue(self._splitArrayBykey(realData,'temperature'), timePeriod)
         pressure = predictService.getPredictionValue(self._splitArrayBykey(realData, 'pressure'), timePeriod)
@@ -53,7 +55,7 @@ class LastValues(APIView):
                     'temperature' : temperatureArray[i],
                     'pressure' : pressure[i],
                     'humidity' : humidity[i],
-                    'timeadata' : data[i]
+                    'timeData' : data[i]
                 })
 
         return {'realData': realData,

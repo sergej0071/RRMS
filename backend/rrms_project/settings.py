@@ -26,7 +26,13 @@ SECRET_KEY = 'django-insecure-%=za=2_$xh05t@wn@sri*c1_8wov*)_yuyryq#%^7td9wai8w#
 DEBUG = True
 
 ALLOWED_HOSTS = []
+CORS_ALLOW_ALL_ORIGINS = True
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:4200',
+    'http://127.0.0.1:8000',
+)
 
 # Application definition
 
@@ -39,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_apscheduler',
+    'corsheaders',
 
     #APPS
     'rrms_arduino_app',
@@ -47,13 +54,15 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',    
 ]
 
 ROOT_URLCONF = 'rrms_project.urls'
@@ -75,15 +84,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'rrms_project.wsgi.application'
-
+MOCK_SCHEDULER = False
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+'default': {
+    'ENGINE': 'djongo',
+    'NAME': 'TestDB',
+    'CLIENT': {
+        'host': 'localhost',
+        'port': 27017,
+        }
     }
 }
 
