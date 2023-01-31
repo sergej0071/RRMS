@@ -57,9 +57,7 @@ export class ParseApiService {
       prev.humidity.push({ value: [current.timeDate, current.humidity] });
       return prev;
     };
-    return this.http.get<IApiValues>(API_PATH + '/last-values', {
-      headers: { amount: String(amount) }
-    }).pipe(
+    return this.http.get<IApiValues>(`${API_PATH}/last-values?amount=${amount}`).pipe(
       map((statisticValues: IApiValues) => ({
         realData: {
           ...statisticValues.realData.reduce(reduceFunc, {
