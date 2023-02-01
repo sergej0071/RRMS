@@ -29,7 +29,7 @@ class LastValues(APIView):
             amount = request.GET['amount']
             query = MainData.objects.all()
             try:
-                j = query.values('temperature', 'pressure', 'humidity', 'timeData')[:int(amount)]
+                j = query.values('temperature', 'pressure', 'humidity', 'timeData')[::-1][:int(amount)][::-1]
             except:
                 j = query.values('temperature', 'pressure', 'humidity','timeData')
             response = self._returnRealAndPredictData(list(j))
