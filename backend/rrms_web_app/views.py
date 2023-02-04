@@ -1,7 +1,6 @@
 from rest_framework.views import APIView
 from django.http import JsonResponse
 from django.http import HttpResponse
-from rrms_arduino_app.arduinoService import ArduinoService
 from .models import MainData
 import logging
 
