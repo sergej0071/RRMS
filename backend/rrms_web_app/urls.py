@@ -1,7 +1,7 @@
 from django.urls import path, include, re_path
 from . import views
 
-app_name = 'rest_endpoins'
+app_name = 'rrms_web_app'
 
 urlpatterns = [
     path('current/', views.CurrentStatus.as_view()),
