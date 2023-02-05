@@ -2,6 +2,7 @@
     "HEADER":{
         "current": "Current",
         "statistic": "Statistic",
+        "analysis": "Analysis",
         "help": "Help"
     },
     "FOOTER":{
@@ -23,7 +24,11 @@
         "statistic_page":{
             "header": "Statistic page",
             "content": "On this page we can observe graphs of changes of each sensor. You can select the time range for which the graph will be built."
-        }
+        },
+        "analysis_page":{
+          "header": "Analysis page",
+          "content": "On this page you can see the data analysis. You can select a range of values, and reload the data. The graphs display: probability histograms, correlation graphs, correlation coefficients."
+      }
     },
     "ANALYSIS": {
       "reload": "Reload",
