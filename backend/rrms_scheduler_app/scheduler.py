@@ -7,6 +7,10 @@ from rrms_project.settings import MOCK_SCHEDULER
 import random
 
 def take_perception_data(_arduinoService):
+    data = _arduinoService.getArduinoModel()
+    if(data != None):
+        e = MainData.objects.create(temperature=data[2].replace("\r\n", ""), pressure=data[1], humidity=data[0], timeaData=str(timezone.now()))
+
     if(MOCK_SCHEDULER):
         data = _arduinoService.getArduinoModel()
         if(data != None):
@@ -17,15 +21,12 @@ def take_perception_data(_arduinoService):
                 pressure=humidityR,
                 humidity=data[0],
                 timeData=str(timezone.now()))
-            
-            
     else:
         MainData.objects.create(
             temperature=random.randint(10, 30),
             pressure=random.randint(30, 70),
             humidity=random.randint(30, 70),
             timeData=str(timezone.now()))
-            
 
 def start():
     _arduinoService = ArduinoService()

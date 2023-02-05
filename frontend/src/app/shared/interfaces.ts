@@ -43,3 +43,40 @@ export interface IPackageEChartOption {
   pressure: EChartsOption,
   humidity: EChartsOption
 }
+
+export interface IProbabilityApi {
+  temperature: {
+    value: number[];
+    amount: number[];
+  };
+  pressure: {
+    value: number[];
+    amount: number[];
+  };
+  humidity: {
+    value: number[];
+    amount: number[];
+  };
+}
+
+export interface IPackageEChartOptionCorrelation {
+  temperaturePressureChart: EChartsOption;
+  temperatureHumidityChart: EChartsOption;
+  pressureHumidityChart: EChartsOption;
+  temperaturePressure: number;
+  temperatureHumidity: number;
+  pressureHumidity: number;
+}
+
+export interface ICorrelationApi {
+  data: {
+    temperature: number[],
+    humidity: number[],
+    pressure: number[]
+  },
+  coefCorrelation: {
+    temperaturePressure: number,
+    temperatureHumidity: number,
+    pressureHumidity: number
+  }
+}

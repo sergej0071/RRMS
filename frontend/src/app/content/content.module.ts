@@ -7,6 +7,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { AnalysisPageComponent } from './analysis-page/analysis-page.component';
 
 
 
@@ -14,7 +15,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
   declarations: [
     CurrentPageComponent,
     HelpPageComponent,
-    StatisticPageComponent
+    StatisticPageComponent,
+    AnalysisPageComponent
   ],
   imports: [
     CommonModule,

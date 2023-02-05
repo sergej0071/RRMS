@@ -51,7 +51,7 @@ class PredictionService():
         return value
 
     def modifyPredictedTime(self, time, timePeriod, predictAmount = 10):
-        
+
         if(time is None or len(time) == 0):
             self.logger.error(f"""exeption behavior in service: {nameof(PredictionService)} \
             *method: {nameof(self.getPredictionValue)} time: {time} None or empty""")
