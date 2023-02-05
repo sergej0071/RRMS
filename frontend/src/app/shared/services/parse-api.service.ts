@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
-import { IArrayData, IChartValue, IChartValues, ICurrentValues, IApiValues, IApiValue, IProbabilityApi } from '../interfaces';
+import { IArrayData, IChartValue, IChartValues, ICurrentValues, IApiValues, IApiValue, IProbabilityApi, ICorrelationApi } from '../interfaces';
 
 const IS_MOCK: boolean = false;
 const API_PATH: string = 'http://127.0.0.1:8000/';
@@ -28,6 +28,19 @@ export class ParseApiService {
     humidity: {
       value: [21, 28, 31, 29, 27],
       amount: [21, 28, 31, 29, 27]
+    }
+  };
+
+  private mockCorrelation: ICorrelationApi = {
+    data: {
+      temperature: [29, 41, 32, 33, 34, 31, 12, 21, 21],
+      humidity: [40, 51, 90, 70, 42, 34, 53, 32, 90],
+      pressure: [1002, 1002, 1002, 1002, 1002, 1002, 1002, 1002, 1002],
+    },
+    coefCorrelation: {
+      temperaturePressure: 90.41544121,
+      temperatureHumidity: 0.32124235,
+      pressureHumidity: -0.52454121
     }
   };
 
@@ -94,5 +107,10 @@ export class ParseApiService {
   public getProbability(amount: number): Observable<IProbabilityApi> {
     if (IS_MOCK) return of(this.mockProbability);
     return this.http.get<IProbabilityApi>(`${API_PATH}/probability/${amount}`);
+  }
+
+  public getCorrelation(amount: number): Observable<ICorrelationApi> {
+    if (IS_MOCK) return of(this.mockCorrelation);
+    return this.http.get<ICorrelationApi>(`${API_PATH}/correlation/${amount}`);
   }
 }

@@ -58,3 +58,25 @@ export interface IProbabilityApi {
     amount: number[];
   };
 }
+
+export interface IPackageEChartOptionCorrelation {
+  temperaturePressureChart: EChartsOption;
+  temperatureHumidityChart: EChartsOption;
+  pressureHumidityChart: EChartsOption;
+  temperaturePressure: number;
+  temperatureHumidity: number;
+  pressureHumidity: number;
+}
+
+export interface ICorrelationApi {
+  data: {
+    temperature: number[],
+    humidity: number[],
+    pressure: number[]
+  },
+  coefCorrelation: {
+    temperaturePressure: number,
+    temperatureHumidity: number,
+    pressureHumidity: number
+  }
+}

@@ -44,6 +44,43 @@
       </div>
     </section>
   </section>
+
+  <section class="chart-assembly" *ngIf="correlation$ | async as correlation; else loading">
+    <div class="chart-assembly__text"> {{'ANALYSIS.correlation' | translate}} </div>
+    <section class="data">
+      <div class="data__chart">
+        <div echarts [options]="correlation.temperaturePressureChart"></div>
+      </div>
+      <div class="data__line"></div>
+      <div class="data__sensor">
+        <div class="data__type">{{'ANALYSIS.temperature' | translate}}</div>
+        <div class="data__type">{{'ANALYSIS.coef' | translate}}: {{correlation.temperaturePressure}}</div>
+        <div class="data__type">{{'ANALYSIS.pressure' | translate}}</div>
+      </div>
+    </section>
+    <section class="data">
+      <div class="data__chart">
+        <div echarts [options]="correlation.temperatureHumidityChart"></div>
+      </div>
+      <div class="data__line"></div>
+      <div class="data__sensor">
+        <div class="data__type">{{'ANALYSIS.temperature' | translate}}</div>
+        <div class="data__type">{{'ANALYSIS.coef' | translate}}: {{correlation.temperatureHumidity}}</div>
+        <div class="data__type">{{'ANALYSIS.humidity' | translate}}</div>
+      </div>
+    </section>
+    <section class="data">
+      <div class="data__chart">
+        <div echarts [options]="correlation.pressureHumidityChart"></div>
+      </div>
+      <div class="data__line"></div>
+      <div class="data__sensor">
+        <div class="data__type">{{'ANALYSIS.pressure' | translate}}</div>
+        <div class="data__type">{{'ANALYSIS.coef' | translate}}: {{correlation.pressureHumidity}}</div>
+        <div class="data__type">{{'ANALYSIS.humidity' | translate}}</div>
+      </div>
+    </section>
+  </section>
 </main>
 
 <ng-template #loading>
