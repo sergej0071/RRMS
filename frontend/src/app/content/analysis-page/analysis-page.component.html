@@ -6,7 +6,7 @@
           [min]="minValue" [formControl]="valueControl" aria-label="units">
         </mat-slider>
       </div>
-      <button class="select-values__reload">
+      <button class="select-values__reload" (click)="reloadData()">
         {{'ANALYSIS.reload' | translate}}
       </button>
     </div>
