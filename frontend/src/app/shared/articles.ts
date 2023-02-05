@@ -8,5 +8,9 @@ export const ARTICLES: IArticle[] = [
   {
     header: 'statistic_page.header',
     content: 'statistic_page.content'
+  },
+  {
+    header: 'analysis_page.header',
+    content: 'analysis_page.content'
   }
 ];

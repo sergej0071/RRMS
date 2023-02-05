@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
-import { IArrayData, IChartValue, IChartValues, ICurrentValues, IApiValues, IApiValue } from '../interfaces';
+import { IArrayData, IChartValue, IChartValues, ICurrentValues, IApiValues, IApiValue, IProbabilityApi, ICorrelationApi } from '../interfaces';
 
-const IS_MOCK: boolean = true;
-const API_PATH: string = '/api';
+const IS_MOCK: boolean = false;
+const API_PATH: string = 'http://127.0.0.1:8000/';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,36 @@ export class ParseApiService {
     private http: HttpClient
   ) { }
 
-  mockLastValues: IChartValue[] = [];
+  private mockLastValues: IChartValue[] = [];
+  private mockProbability: IProbabilityApi = {
+    temperature: {
+      value: [21, 28, 31, 29, 27],
+      amount: [21, 28, 31, 29, 27]
+    },
+    pressure: {
+      value: [21, 28, 31, 29, 27],
+      amount: [21, 28, 31, 29, 27]
+    },
+    humidity: {
+      value: [21, 28, 31, 29, 27],
+      amount: [21, 28, 31, 29, 27]
+    }
+  };
 
-  getMockLastValues(amount: number): Observable<IChartValues> {
+  private mockCorrelation: ICorrelationApi = {
+    data: {
+      temperature: [29, 41, 32, 33, 34, 31, 12, 21, 21],
+      humidity: [40, 51, 90, 70, 42, 34, 53, 32, 90],
+      pressure: [1002, 1002, 1002, 1002, 1002, 1002, 1002, 1002, 1002],
+    },
+    coefCorrelation: {
+      temperaturePressure: 90.41544121,
+      temperatureHumidity: 0.32124235,
+      pressureHumidity: -0.52454121
+    }
+  };
+
+  public getMockLastValues(amount: number): Observable<IChartValues> {
     const value = 24 + (Math.random() - 0.5) * 5;
     this.mockLastValues.push({ value: [new Date, value] });
     const mockData = this.mockLastValues.slice(-amount);
@@ -35,7 +62,7 @@ export class ParseApiService {
     });
   }
 
-  getMockCurrent(): Observable<ICurrentValues> {
+  public getMockCurrent(): Observable<ICurrentValues> {
     const value = Math.round(24 + (Math.random() - 0.5) * 5);
     return of({
       temperature: value,
@@ -44,22 +71,20 @@ export class ParseApiService {
     });
   }
 
-  getCurrent(): Observable<ICurrentValues> {
+  public getCurrent(): Observable<ICurrentValues> {
     if (IS_MOCK) return this.getMockCurrent();
     return this.http.get<ICurrentValues>(API_PATH + '/current');
   }
 
-  getLastValues(amount: number): Observable<IChartValues> {
+  public getLastValues(amount: number): Observable<IChartValues> {
     if (IS_MOCK) return this.getMockLastValues(amount);
     const reduceFunc = (prev: IArrayData, current: IApiValue) => {
-      prev.temperature.push({ value: [current.date, current.temperature] });
-      prev.pressure.push({ value: [current.date, current.pressure] });
-      prev.humidity.push({ value: [current.date, current.humidity] });
+      prev.temperature.push({ value: [current.timeData, current.temperature] });
+      prev.pressure.push({ value: [current.timeData, current.pressure] });
+      prev.humidity.push({ value: [current.timeData, current.humidity] });
       return prev;
     };
-    return this.http.get<IApiValues>(API_PATH + '/last-values', {
-      headers: { amount: String(amount) }
-    }).pipe(
+    return this.http.get<IApiValues>(`${API_PATH}/last-values/${amount}`).pipe(
       map((statisticValues: IApiValues) => ({
         realData: {
           ...statisticValues.realData.reduce(reduceFunc, {
@@ -77,5 +102,15 @@ export class ParseApiService {
         }
       }))
     );
+  }
+
+  public getProbability(amount: number): Observable<IProbabilityApi> {
+    if (IS_MOCK) return of(this.mockProbability);
+    return this.http.get<IProbabilityApi>(`${API_PATH}/probability/${amount}`);
+  }
+
+  public getCorrelation(amount: number): Observable<ICorrelationApi> {
+    if (IS_MOCK) return of(this.mockCorrelation);
+    return this.http.get<ICorrelationApi>(`${API_PATH}/correlation/${amount}`);
   }
 }

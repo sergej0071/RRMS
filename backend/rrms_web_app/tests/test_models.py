@@ -6,7 +6,7 @@ class MainDataModelTests(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        MainData.objects.create(temperature=12.3, pressure=60121, humidity=69, timeadata=str(timezone.now()))
+        MainData.objects.create(temperature=12.3, pressure=60121, humidity=69, timeaData=str(timezone.now()))
 
     def test_MainModel_MainModelHasTemperature_ReturnTrue(self):
         #arrange
@@ -16,7 +16,7 @@ class MainDataModelTests(TestCase):
         #act
         field_label = mainData._meta.get_field(expectedName).verbose_name
 
-        #asser
+        #assert
         self.assertEquals(field_label, expectedName)
 
     def test_MainModel_MainModelHasPressure_ReturnTrue(self):
@@ -27,7 +27,7 @@ class MainDataModelTests(TestCase):
         #act
         field_label = mainData._meta.get_field(expectedName).verbose_name
 
-        #asser
+        #assert
         self.assertEquals(field_label, expectedName)
 
     def test_MainModel_MainModelHasHumidity_ReturnTrue(self):
@@ -38,18 +38,18 @@ class MainDataModelTests(TestCase):
         #act
         field_label = mainData._meta.get_field(expectedName).verbose_name
 
-        #asser
+        #assert
         self.assertEquals(field_label, expectedName)
 
-    def test_MainModel_MainModelHasTimeadata_ReturnTrue(self):
+    def test_MainModel_MainModelHastimeaData_ReturnTrue(self):
         #arrange
-        expectedName = 'timeadata'
+        expectedName = 'timeaData'
         mainData = MainData.objects.last()
         
         #act
         field_label = mainData._meta.get_field(expectedName).verbose_name
 
-        #asser
+        #assert
         self.assertEquals(field_label, expectedName)
 
     def test_MainModel_HasCorretData_ReturnTrue(self):
@@ -61,7 +61,7 @@ class MainDataModelTests(TestCase):
         #act
         mainData = MainData.objects.last()
         
-        #asser
+        #assert
         self.assertEquals(True, self._checkMainModelData(mainData, expectedTemperature, expectedPressure, expectedHumidity))
 
   
