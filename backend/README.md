@@ -31,7 +31,9 @@
    'rrms_scheduler_app',
    ```
 8. Запустити міграцію повторно
+   ```sh
    python manage.py migrate
+   ```
 9. Запустити проект
    ```sh
    python manage.py runserver
