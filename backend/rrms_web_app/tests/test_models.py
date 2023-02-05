@@ -6,7 +6,7 @@ class MainDataModelTests(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        MainData.objects.create(temperature=12.3, pressure=60121, humidity=69, timeaData=str(timezone.now()))
+        MainData.objects.create(temperature=12.3, pressure=60121, humidity=69, timeData=str(timezone.now()))
 
     def test_MainModel_MainModelHasTemperature_ReturnTrue(self):
         #arrange
@@ -41,9 +41,9 @@ class MainDataModelTests(TestCase):
         #assert
         self.assertEquals(field_label, expectedName)
 
-    def test_MainModel_MainModelHastimeaData_ReturnTrue(self):
+    def test_MainModel_MainModelHasTimeData_ReturnTrue(self):
         #arrange
-        expectedName = 'timeaData'
+        expectedName = 'timeData'
         mainData = MainData.objects.last()
         
         #act

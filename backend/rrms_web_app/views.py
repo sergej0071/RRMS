@@ -15,7 +15,6 @@ from rrms_web_app.viewHelpers.dataMapperHelper import DataMapperHelper
 from varname import nameof
 import logging
 
-
 class CurrentStatus(APIView):
     def __init__(self):
             self.logger = logging.getLogger('error_logger')

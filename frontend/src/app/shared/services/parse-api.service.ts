@@ -46,7 +46,7 @@ export class ParseApiService {
 
   public getMockLastValues(amount: number): Observable<IChartValues> {
     const value = 24 + (Math.random() - 0.5) * 5;
-    this.mockLastValues.push({ value: [new Date, value] });
+    this.mockLastValues.push({ value: [new Date(), value] });
     const mockData = this.mockLastValues.slice(-amount);
     return of({
       realData: {
