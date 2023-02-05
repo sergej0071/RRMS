@@ -12,7 +12,7 @@ class GenericORMaRepository():
             return list(model
                         .objects
                         .reverse()
-                        .values(*fields)[:int(amount)][::-1])        
+                        .values(*fields)[:int(amount)])        
         except Exception as e:
             self.logger.error(f"""'An exception occurred in {nameof(GenericORMaRepository)}. method {nameof(self.getLastElement)} exeption - {e} '""")
         return None
