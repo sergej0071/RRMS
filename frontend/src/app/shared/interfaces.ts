@@ -43,3 +43,18 @@ export interface IPackageEChartOption {
   pressure: EChartsOption,
   humidity: EChartsOption
 }
+
+export interface IProbabilityApi {
+  temperature: {
+    value: number[];
+    amount: number[];
+  };
+  pressure: {
+    value: number[];
+    amount: number[];
+  };
+  humidity: {
+    value: number[];
+    amount: number[];
+  };
+}
