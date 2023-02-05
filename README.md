@@ -1,2 +1,26 @@
-# RRMS
-Research Results Monitoring System
+# RRMS - Research Results Monitoring System
+
+## Робота з frontend
+
+Для запуску проекту Angular необхідно щоб на комп'ютер було встановлено:
+* [node.js](https://nodejs.org/en/)
+* [Angular CLI](https://angular.io/cli)
+
+Для встановлення node.js її треба завантажити з офіційного сайту та встановити.
+Для встановлення Angular CLI необхідно виконати наступну команду: `npm install -g @angular/cli`.
+
+Для запуску програми необхідно:
+
+* клонувати репозиторій;
+* відкрити консоль у папці frontend;
+* ввести `npm update`;
+* ввести `ng serve`;
+* відкрити в браузері `http://localhost:4200`.
+
+Параметри роботи з API знаходяться в цьому файлі:
+`frontend\src\app\shared\services\parse-api.service.ts`
+
+Константа `IS_MOCK` відповідає за виведення мокових даних. Дня отримання даних з API вона має бути у стані `false`.
+Константа `API_PATH` відповідає за шлях до використовуваного API.
+
+Для запуску юніт тестів необхідно ввести команду `ng test`, проте якщо не перевести контстанту `IS_MOCK` у значення `false`, то 2 тести будуть валитися.
