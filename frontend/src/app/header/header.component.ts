@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public pages: string[] = [
     'current',
     'statistic',
+    'analysis',
     'help'
   ];
   public theme$: BehaviorSubject<string> = this.settingsService.getTheme();

@@ -26,8 +26,6 @@ SECRET_KEY = 'django-insecure-%=za=2_$xh05t@wn@sri*c1_8wov*)_yuyryq#%^7td9wai8w#
 DEBUG = True
 
 ALLOWED_HOSTS = []
-CORS_ALLOW_ALL_ORIGINS = True
-
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
@@ -36,7 +34,9 @@ CORS_ORIGIN_WHITELIST = (
 
 # Application definition
 
-INSTALLED_APPS = [
+INSTALLED_APPS = [    
+    'django_apscheduler',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,9 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'django_apscheduler',
-    'corsheaders',
-
+    
     #APPS
     'rrms_arduino_app',
     'rrms_scheduler_app',
