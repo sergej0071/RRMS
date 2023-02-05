@@ -9,13 +9,13 @@ class ArduinoService():
             self.logger = logging.getLogger('error_logger')
             self.ArduinoConnection = serial.Serial(arduinoComPort, readingFrequency)
         except Exception as e:
-            self.logger.error(f'An exception occurred in ArduinoTicknessService."\
-            +" Please check the ArduinoConnection. Maybe, serial port open? : {e}')
+            self.logger.error(f"""An exception occurred in ArduinoTicknessService.
+            Please check the ArduinoConnection. Maybe, serial port open? : {e}""")
 
     def getArduinoModel(self):
         try:
             return str(self.ArduinoConnection.readline().decode('ascii')).split(self.ArduinoSeparator)
         except Exception as e:
-            self.logger.error(f'An exception occurred in ArduinoTicknessService."\
-            +" Please check the ArduinoConnection. Maybe, serial port open? : {e}')
+            self.logger.error(f"""An exception occurred in ArduinoTicknessService.
+            Please check the ArduinoConnection. Maybe, serial port open? : {e}""")
         return None
