@@ -19,12 +19,8 @@ class GenericORMaRepository():
     
     def getLastElement(self, model, *fields):
         try:
-            f = MainData.objects.all().values(*fields).last()
+            f = MainData.objects.values(*fields).last()
             return(f)
         except Exception as e:
             self.logger.error(f'An exception occurred in CurrentStatus. exeption - {e} ')
         return None
-        
-
-    
-        
