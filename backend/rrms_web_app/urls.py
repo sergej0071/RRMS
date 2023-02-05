@@ -8,3 +8,4 @@ urlpatterns = [
     path('last-values/<int:amount>', views.LastValues.as_view()),
     path('probability/<int:amount>', views.ProbabilityDiagram.as_view()),
     path('correlation/<int:amount>', views.Correlation.as_view())
+]
