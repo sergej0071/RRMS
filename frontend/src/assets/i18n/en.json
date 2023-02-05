@@ -24,5 +24,15 @@
             "header": "Statistic page",
             "content": "On this page we can observe graphs of changes of each sensor. You can select the time range for which the graph will be built."
         }
-    }
+    },
+    "ANALYSIS": {
+      "reload": "Reload",
+      "probability_diagrams": "Probability Diagrams",
+      "correlation": "Correlation",
+      "coef": "Coef",
+      "temperature": "Temperature",
+      "pressure": "Pressure",
+      "humidity": "Humidity"
+  },
+  "loading": "loading..."
 }
