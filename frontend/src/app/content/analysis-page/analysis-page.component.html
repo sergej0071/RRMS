@@ -1,0 +1,20 @@
+<main class="wrapper">
+    <section class="select-values">
+      <div class="select-values__select">
+        <div class="select-values__slider-wrapper">
+          <mat-slider thumbLabel class="select-values__slider" tickInterval="10" step="10" [max]="maxValue"
+            [min]="minValue" [formControl]="valueControl" aria-label="units">
+          </mat-slider>
+        </div>
+        <button class="select-values__reload">
+          {{'ANALYSIS.reload' | translate}}
+        </button>
+      </div>
+    </section>
+  </main>
+  
+  <ng-template #loading>
+    <div class="loading">
+      {{'loading' | translate}}
+    </div>
+  </ng-template>

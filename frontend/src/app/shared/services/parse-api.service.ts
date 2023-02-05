@@ -4,7 +4,7 @@ import { map, Observable, of } from 'rxjs';
 import { IArrayData, IChartValue, IChartValues, ICurrentValues, IApiValues, IApiValue } from '../interfaces';
 
 const IS_MOCK: boolean = true;
-const API_PATH: string = '/api';
+const API_PATH: string = 'http://127.0.0.1:8000/';
 
 @Injectable({
   providedIn: 'root'
@@ -52,14 +52,12 @@ export class ParseApiService {
   getLastValues(amount: number): Observable<IChartValues> {
     if (IS_MOCK) return this.getMockLastValues(amount);
     const reduceFunc = (prev: IArrayData, current: IApiValue) => {
-      prev.temperature.push({ value: [current.date, current.temperature] });
-      prev.pressure.push({ value: [current.date, current.pressure] });
-      prev.humidity.push({ value: [current.date, current.humidity] });
+      prev.temperature.push({ value: [current.timeData, current.temperature] });
+      prev.pressure.push({ value: [current.timeData, current.pressure] });
+      prev.humidity.push({ value: [current.timeData, current.humidity] });
       return prev;
     };
-    return this.http.get<IApiValues>(API_PATH + '/last-values', {
-      headers: { amount: String(amount) }
-    }).pipe(
+    return this.http.get<IApiValues>(`${API_PATH}/last-values/${amount}`).pipe(
       map((statisticValues: IApiValues) => ({
         realData: {
           ...statisticValues.realData.reduce(reduceFunc, {
