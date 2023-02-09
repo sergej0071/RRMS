@@ -6,4 +6,4 @@ class MainData(models.Model):
     temperature = models.FloatField()
     pressure = models.FloatField()
     humidity = models.FloatField()
-    timeadata = models.DateTimeField()
+    timeData = models.DateTimeField()
