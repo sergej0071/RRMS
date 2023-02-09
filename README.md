@@ -21,7 +21,7 @@
 
 ![Arduino](https://user-images.githubusercontent.com/82032813/216855648-c7cae2a4-c9ea-486a-9bac-12832da93219.png)
 
-## Робота із бекедом
+## Робота з backend
 
 1. Клонувати проект на локальний комп'ютер.
    ```sh
