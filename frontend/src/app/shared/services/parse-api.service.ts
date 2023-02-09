@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IChartValue, ICurrentValues, ILastValues } from '../interfaces';
 
-const IS_MOCK: boolean = false;
+const IS_MOCK: boolean = true;
 const API_PATH: string = '/api';
 
 @Injectable({
