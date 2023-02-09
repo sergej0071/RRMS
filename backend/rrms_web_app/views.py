@@ -23,9 +23,9 @@ class LastValues(APIView):
             amount = request.headers.get('amount')
             query = MainData.objects.all()
             try:
-                j = query.values('temperature', 'pressure', 'humidity', 'timeadata')[:int(amount)]
+                j = query.values('temperature', 'pressure', 'humidity', 'timeData')[:int(amount)]
             except:
-                j = query.values('temperature', 'pressure', 'humidity','timeadata')            
+                j = query.values('temperature', 'pressure', 'humidity','timeData')            
             response = list(j)
         except Exception as e:
             logger.error(f'An exception occurred in ArduinoTicknessService. exeption - {e} ')
