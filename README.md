@@ -41,28 +41,15 @@
    ```
 5. Встановити MongoDBCompass
 Після втановлення клієнту bd треба створити на базу даних 'TestDB' для подільшої роботи з нею.
-
-6. Закоментити залежності бібліотек та сервісу 'django_apscheduler' та 'rrms_scheduler_app' у rrms_project/settings.py для корректної першої міграції
-   ```sh
-   #'django_apscheduler',
-   #'rrms_scheduler_app',
-   ```
-7. Запустити міграцію
+6. Запустити міграцію
    ```sh
    python manage.py migrate
    ```
-8. Відкоментувати сервіси 'django_apscheduler' та 'rrms_scheduler_app' у rrms_project/settings.py
-   ```sh
-   'django_apscheduler',
-   'rrms_scheduler_app',
-   ```
-9. Запустити міграцію повторно
-   python manage.py migrate
-10. Запустити проект
+7. Запустити проект
    ```sh
    python manage.py runserver
    ```
-11. Тестинг усіх модулів
+8. Тестинг усіх модулів
 ```sh
 python manage.py test
 ```
