@@ -14,13 +14,13 @@ def take_perception_data(_arduinoService):
                 temperature=data[2].replace("\r\n", ""),
                 pressure=data[1],
                 humidity=data[0],
-                timeadata=str(timezone.now()))
+                timeData=str(timezone.now()))
     else:
         e = MainData.objects.create(
             temperature=random.randint(10, 30),
             pressure=random.randint(30, 70),
             humidity=random.randint(100, 1500),
-            timeadata=str(timezone.now()))
+            timeData=str(timezone.now()))
 
 def start():
     _arduinoService = ArduinoService()
